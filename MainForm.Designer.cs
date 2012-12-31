@@ -41,7 +41,6 @@
             this.components = new System.ComponentModel.Container();
             this.DrawPanel = new System.Windows.Forms.Panel();
             this.StartGame = new System.Windows.Forms.Button();
-            this.NumberPanel = new Year2013.DoubeBufferDrawPanel();
             this.DrawPicture = new System.Windows.Forms.PictureBox();
             this.DrawTimer = new System.Windows.Forms.Timer(this.components);
             this.splitter1 = new System.Windows.Forms.Splitter();
@@ -51,6 +50,7 @@
             this.columnHeader3 = new System.Windows.Forms.ColumnHeader();
             this.StartPauseTimer = new System.Windows.Forms.Timer(this.components);
             this.WaitResultTimer = new System.Windows.Forms.Timer(this.components);
+            this.NumberPanel = new Year2013.DoubeBufferDrawPanel();
             this.DrawPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DrawPicture)).BeginInit();
             this.SuspendLayout();
@@ -63,29 +63,19 @@
             this.DrawPanel.Dock = System.Windows.Forms.DockStyle.Left;
             this.DrawPanel.Location = new System.Drawing.Point(0, 0);
             this.DrawPanel.Name = "DrawPanel";
-            this.DrawPanel.Size = new System.Drawing.Size(645, 562);
+            this.DrawPanel.Size = new System.Drawing.Size(723, 730);
             this.DrawPanel.TabIndex = 1;
             // 
             // StartGame
             // 
             this.StartGame.BackColor = System.Drawing.Color.Goldenrod;
-            this.StartGame.Location = new System.Drawing.Point(500, 466);
+            this.StartGame.Location = new System.Drawing.Point(584, 617);
             this.StartGame.Name = "StartGame";
             this.StartGame.Size = new System.Drawing.Size(139, 70);
             this.StartGame.TabIndex = 3;
             this.StartGame.Text = "开始";
             this.StartGame.UseVisualStyleBackColor = false;
             this.StartGame.Click += new System.EventHandler(this.StartGame_Click);
-            // 
-            // NumberPanel
-            // 
-            this.NumberPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.NumberPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.NumberPanel.Location = new System.Drawing.Point(62, 103);
-            this.NumberPanel.Name = "NumberPanel";
-            this.NumberPanel.Size = new System.Drawing.Size(510, 357);
-            this.NumberPanel.TabIndex = 4;
-            this.NumberPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.NumberPanel_Paint);
             // 
             // DrawPicture
             // 
@@ -94,7 +84,7 @@
             this.DrawPicture.ImageLocation = "";
             this.DrawPicture.Location = new System.Drawing.Point(0, 0);
             this.DrawPicture.Name = "DrawPicture";
-            this.DrawPicture.Size = new System.Drawing.Size(645, 562);
+            this.DrawPicture.Size = new System.Drawing.Size(723, 730);
             this.DrawPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.DrawPicture.TabIndex = 0;
             this.DrawPicture.TabStop = false;
@@ -106,9 +96,9 @@
             // 
             // splitter1
             // 
-            this.splitter1.Location = new System.Drawing.Point(645, 0);
+            this.splitter1.Location = new System.Drawing.Point(723, 0);
             this.splitter1.Name = "splitter1";
-            this.splitter1.Size = new System.Drawing.Size(3, 562);
+            this.splitter1.Size = new System.Drawing.Size(3, 730);
             this.splitter1.TabIndex = 3;
             this.splitter1.TabStop = false;
             // 
@@ -125,9 +115,9 @@
             this.ResultList.Font = new System.Drawing.Font("微软雅黑", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.ResultList.ForeColor = System.Drawing.Color.Yellow;
             this.ResultList.GridLines = true;
-            this.ResultList.Location = new System.Drawing.Point(648, 0);
+            this.ResultList.Location = new System.Drawing.Point(726, 0);
             this.ResultList.Name = "ResultList";
-            this.ResultList.Size = new System.Drawing.Size(247, 562);
+            this.ResultList.Size = new System.Drawing.Size(292, 730);
             this.ResultList.TabIndex = 4;
             this.ResultList.UseCompatibleStateImageBehavior = false;
             this.ResultList.View = System.Windows.Forms.View.Details;
@@ -156,17 +146,28 @@
             // 
             this.WaitResultTimer.Tick += new System.EventHandler(this.WaitResultTimer_Tick);
             // 
+            // NumberPanel
+            // 
+            this.NumberPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.NumberPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.NumberPanel.Location = new System.Drawing.Point(62, 187);
+            this.NumberPanel.Name = "NumberPanel";
+            this.NumberPanel.Size = new System.Drawing.Size(588, 357);
+            this.NumberPanel.TabIndex = 4;
+            this.NumberPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.NumberPanel_Paint);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(895, 562);
+            this.ClientSize = new System.Drawing.Size(1018, 730);
             this.Controls.Add(this.ResultList);
             this.Controls.Add(this.splitter1);
             this.Controls.Add(this.DrawPanel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "英雄三国摇奖2013";
+            this.Text = "英雄三国-2013云计算摇奖程序";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.DrawPanel.ResumeLayout(false);

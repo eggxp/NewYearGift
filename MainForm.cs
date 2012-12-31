@@ -297,7 +297,7 @@ namespace Year2013
         private void ShowResultForm(int result)
         {
             InputUserInfo frm = new InputUserInfo();
-            frm.Location = new Point(this.Location.X + this.Width / 2, this.Location.Y + 500);
+            frm.Location = new Point(this.Location.X + 700, this.Location.Y + 150);
             frm.InitText(result);
             frm.ShowDialog();
         }

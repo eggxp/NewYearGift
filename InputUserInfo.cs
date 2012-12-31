@@ -53,10 +53,35 @@ namespace Year2013
             }
             while(!MainForm.pWindow.AddUserInfo(name, Result))
             {
-                MessageBox.Show("姓名重复了!");
+                MessageBox.Show("工号重复了!");
+                return;
+            }
+
+            string promString = string.Format("您的工号是<{0:G}>, 确定吗?", name);
+            DialogResult mess = MessageBox.Show(promString,
+                    "确认提示", MessageBoxButtons.YesNo);
+            if (mess == DialogResult.No)
+            {
+                InputName.Text = "";
                 return;
             }
             this.Close();
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            Button currentButton = (Button)sender;
+            int inputNumb = 0;
+            if (!int.TryParse(currentButton.Text, out inputNumb))
+            {
+                InputName.Text = "";
+                return;
+            }
+            if (InputName.Text.Length >= 4)
+            {
+                return;
+            }
+            InputName.Text += inputNumb.ToString();
         }
     }
 }
