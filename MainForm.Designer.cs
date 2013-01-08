@@ -41,16 +41,16 @@
             this.components = new System.ComponentModel.Container();
             this.DrawPanel = new System.Windows.Forms.Panel();
             this.StartGame = new System.Windows.Forms.Button();
-            this.DrawPicture = new System.Windows.Forms.PictureBox();
+            this.NumberPanel = new Year2013.DoubeBufferDrawPanel();
             this.DrawTimer = new System.Windows.Forms.Timer(this.components);
             this.splitter1 = new System.Windows.Forms.Splitter();
+            this.StartPauseTimer = new System.Windows.Forms.Timer(this.components);
+            this.WaitResultTimer = new System.Windows.Forms.Timer(this.components);
             this.ResultList = new System.Windows.Forms.ListView();
             this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader2 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader3 = new System.Windows.Forms.ColumnHeader();
-            this.StartPauseTimer = new System.Windows.Forms.Timer(this.components);
-            this.WaitResultTimer = new System.Windows.Forms.Timer(this.components);
-            this.NumberPanel = new Year2013.DoubeBufferDrawPanel();
+            this.DrawPicture = new System.Windows.Forms.PictureBox();
             this.DrawPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DrawPicture)).BeginInit();
             this.SuspendLayout();
@@ -77,17 +77,15 @@
             this.StartGame.UseVisualStyleBackColor = false;
             this.StartGame.Click += new System.EventHandler(this.StartGame_Click);
             // 
-            // DrawPicture
+            // NumberPanel
             // 
-            this.DrawPicture.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DrawPicture.Image = global::Year2013.Properties.Resources.bj;
-            this.DrawPicture.ImageLocation = "";
-            this.DrawPicture.Location = new System.Drawing.Point(0, 0);
-            this.DrawPicture.Name = "DrawPicture";
-            this.DrawPicture.Size = new System.Drawing.Size(723, 730);
-            this.DrawPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.DrawPicture.TabIndex = 0;
-            this.DrawPicture.TabStop = false;
+            this.NumberPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.NumberPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.NumberPanel.Location = new System.Drawing.Point(62, 187);
+            this.NumberPanel.Name = "NumberPanel";
+            this.NumberPanel.Size = new System.Drawing.Size(588, 357);
+            this.NumberPanel.TabIndex = 4;
+            this.NumberPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.NumberPanel_Paint);
             // 
             // DrawTimer
             // 
@@ -102,10 +100,19 @@
             this.splitter1.TabIndex = 3;
             this.splitter1.TabStop = false;
             // 
+            // StartPauseTimer
+            // 
+            this.StartPauseTimer.Interval = 1000;
+            this.StartPauseTimer.Tick += new System.EventHandler(this.StartPauseTimer_Tick);
+            // 
+            // WaitResultTimer
+            // 
+            this.WaitResultTimer.Tick += new System.EventHandler(this.WaitResultTimer_Tick);
+            // 
             // ResultList
             // 
             this.ResultList.BackColor = System.Drawing.Color.DarkRed;
-            this.ResultList.BackgroundImage = global::Year2013.Properties.Resources.bj;
+            this.ResultList.BackgroundImage = global::Year2013.Properties.Resources.bj2;
             this.ResultList.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ResultList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
@@ -137,24 +144,17 @@
             this.columnHeader3.Text = "结果";
             this.columnHeader3.Width = 200;
             // 
-            // StartPauseTimer
+            // DrawPicture
             // 
-            this.StartPauseTimer.Interval = 1000;
-            this.StartPauseTimer.Tick += new System.EventHandler(this.StartPauseTimer_Tick);
-            // 
-            // WaitResultTimer
-            // 
-            this.WaitResultTimer.Tick += new System.EventHandler(this.WaitResultTimer_Tick);
-            // 
-            // NumberPanel
-            // 
-            this.NumberPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.NumberPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.NumberPanel.Location = new System.Drawing.Point(62, 187);
-            this.NumberPanel.Name = "NumberPanel";
-            this.NumberPanel.Size = new System.Drawing.Size(588, 357);
-            this.NumberPanel.TabIndex = 4;
-            this.NumberPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.NumberPanel_Paint);
+            this.DrawPicture.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DrawPicture.Image = global::Year2013.Properties.Resources.bj;
+            this.DrawPicture.ImageLocation = "";
+            this.DrawPicture.Location = new System.Drawing.Point(0, 0);
+            this.DrawPicture.Name = "DrawPicture";
+            this.DrawPicture.Size = new System.Drawing.Size(723, 730);
+            this.DrawPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.DrawPicture.TabIndex = 0;
+            this.DrawPicture.TabStop = false;
             // 
             // MainForm
             // 

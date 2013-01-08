@@ -233,7 +233,7 @@ namespace Year2013
             if (GameStart)
             {
                 GameStart = false;
-                StartGame.Text = "开始";
+                StartGame.Text = string.Format("开始({0:G}人)", ResultDataList.Count + 1);
                 WaitResultTimer.Enabled = true;
             }
             else

@@ -66,5 +66,12 @@ namespace Year2013.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        internal static System.Drawing.Bitmap bj2 {
+            get {
+                object obj = ResourceManager.GetObject("bj2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }
