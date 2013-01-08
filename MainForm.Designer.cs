@@ -114,7 +114,6 @@
             // ResultList
             // 
             this.ResultList.BackColor = System.Drawing.Color.DarkRed;
-            this.ResultList.BackgroundImage = global::Year2013.Properties.Resources.bj2;
             this.ResultList.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ResultList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
