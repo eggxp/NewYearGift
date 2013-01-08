@@ -246,7 +246,7 @@ namespace Year2013
                 }
 
                 StartPauseTimer.Enabled = true;
-                StartPauseTick = 3;
+                StartPauseTick = 2;
                 if (!IS_DEBUG)
                 {
                     StartGame.Visible = false;
@@ -297,7 +297,7 @@ namespace Year2013
         private void ShowResultForm(int result)
         {
             InputUserInfo frm = new InputUserInfo();
-            frm.Location = new Point(this.Location.X + 700, this.Location.Y + 150);
+            frm.Location = new Point(this.Location.X + 800, this.Location.Y + 150);
             frm.InitText(result);
             frm.ShowDialog();
         }
