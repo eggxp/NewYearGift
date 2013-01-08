@@ -69,7 +69,7 @@
             // StartGame
             // 
             this.StartGame.BackColor = System.Drawing.Color.Goldenrod;
-            this.StartGame.Location = new System.Drawing.Point(584, 617);
+            this.StartGame.Location = new System.Drawing.Point(788, 634);
             this.StartGame.Name = "StartGame";
             this.StartGame.Size = new System.Drawing.Size(139, 70);
             this.StartGame.TabIndex = 3;
@@ -85,7 +85,7 @@
             this.DrawPicture.Location = new System.Drawing.Point(0, 0);
             this.DrawPicture.Name = "DrawPicture";
             this.DrawPicture.Size = new System.Drawing.Size(1000, 730);
-            this.DrawPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.DrawPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.DrawPicture.TabIndex = 0;
             this.DrawPicture.TabStop = false;
             // 
@@ -148,7 +148,7 @@
             // NumberPanel
             // 
             this.NumberPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.NumberPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.NumberPanel.BackColor = System.Drawing.Color.SaddleBrown;
             this.NumberPanel.Location = new System.Drawing.Point(62, 187);
             this.NumberPanel.Name = "NumberPanel";
             this.NumberPanel.Size = new System.Drawing.Size(865, 357);
@@ -170,6 +170,7 @@
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.DrawPanel.ResumeLayout(false);
+            this.DrawPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DrawPicture)).EndInit();
             this.ResumeLayout(false);
 
