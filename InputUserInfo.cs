@@ -20,6 +20,7 @@ namespace Year2013
 
         public void InitText(int text)
         {
+            btFormExit.Visible = false;
             labMark.Text = text.ToString();
             Result = text;
         }
@@ -53,6 +54,7 @@ namespace Year2013
             }
             while(!MainForm.pWindow.AddUserInfo(name, Result))
             {
+                btFormExit.Visible = true;
                 MessageBox.Show("工号重复了!");
                 return;
             }
@@ -82,6 +84,11 @@ namespace Year2013
                 return;
             }
             InputName.Text += inputNumb.ToString();
+        }
+
+        private void btFormExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

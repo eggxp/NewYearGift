@@ -46,6 +46,7 @@
             this.button10 = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
             this.InputName = new System.Windows.Forms.TextBox();
+            this.btFormExit = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -214,11 +215,22 @@
             this.InputName.Size = new System.Drawing.Size(193, 46);
             this.InputName.TabIndex = 16;
             // 
+            // btFormExit
+            // 
+            this.btFormExit.Location = new System.Drawing.Point(31, 466);
+            this.btFormExit.Name = "btFormExit";
+            this.btFormExit.Size = new System.Drawing.Size(59, 46);
+            this.btFormExit.TabIndex = 17;
+            this.btFormExit.Text = "退出";
+            this.btFormExit.UseVisualStyleBackColor = true;
+            this.btFormExit.Click += new System.EventHandler(this.btFormExit_Click);
+            // 
             // InputUserInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(232, 524);
+            this.Controls.Add(this.btFormExit);
             this.Controls.Add(this.InputName);
             this.Controls.Add(this.button11);
             this.Controls.Add(this.button10);
@@ -265,5 +277,6 @@
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.Button button11;
         private System.Windows.Forms.TextBox InputName;
+        private System.Windows.Forms.Button btFormExit;
     }
 }
