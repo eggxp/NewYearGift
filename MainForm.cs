@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.IO;
+using System.Collections;
 
 namespace Year2013
 {
@@ -122,10 +123,41 @@ namespace Year2013
         public static MainForm pWindow = null;
         List<UserInfo> ResultDataList;
         string CurrentPlayerName;
+        PriceItemByReward[] AllPriceItem;
         public MainForm()
         {
             InitializeComponent();
             pWindow = this;
+        }
+
+        public void InitAllPrice()
+        {
+            AllPriceItem = new PriceItemByReward[3];
+            for (int i = 0; i < 3; ++i)
+            {
+                AllPriceItem[i] = new PriceItemByReward();
+            }
+            // 一等奖
+            AllPriceItem[0].AddItem("PSV", 1);
+            AllPriceItem[0].AddItem("PS3", 1);
+            // 二等奖
+            AllPriceItem[1].AddItem(
+                "Sennheiser/森海塞尔 HD429重低音头戴式耳机锦艺行货包邮-圆声带", 3);
+            AllPriceItem[1].AddItem(
+                "美国凯仕乐(国际品牌) KSR-928 汽车家庭两用按摩背垫", 3);
+            // 三等奖
+            AllPriceItem[2].AddItem(
+                "御缘正品玉石坐垫 电加热坐垫锗石坐垫托玛琳坐垫办公室坐垫赭石", 4);
+            AllPriceItem[2].AddItem(
+                "先锋（singfun)摇头暖风机DQ519", 4);
+            AllPriceItem[2].AddItem(
+                "格林盈璐GREENYELLOW 吸入式灭蚊器GM908 光触媒灭蚊灯", 3);
+            AllPriceItem[2].AddItem(
+                "飞利浦（Philips）HD9303/19 不锈钢电水壶", 4);
+            AllPriceItem[2].AddItem(
+                "和乐族 超声波 香薰机 出日本 负离子 空气 净化器 美容 加湿器", 3);
+            AllPriceItem[2].AddItem(
+                "原创 刀剑神域抱枕 亚丝娜 明日奈 动漫等身抱枕套18X送芯", 2);
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -145,7 +177,7 @@ namespace Year2013
         private void InitStart()
         {
             PictureState = new NumberState[4];
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < PictureState.Length; i++)
             {
                 PictureState[i] = new NumberState();
                 PictureState[i].Init(i % 2, i);
@@ -175,7 +207,7 @@ namespace Year2013
             SolidBrush brush = new SolidBrush(Color.Gold);
             SolidBrush shadow = new SolidBrush(Color.Red);
             int shadowSize = 5;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < PictureState.Length; i++)
             {
                 int[] result = PictureState[i].GetNumbers();
                 for (int num = 0; num < 3; num++)
@@ -211,14 +243,14 @@ namespace Year2013
             // 更新滚动进度
             if(GameStart)
             {
-                for (int i = 0; i < 4; i++)
+                for (int i = 0; i < PictureState.Length; i++)
                 {
                     PictureState[i].Update();
                 }
             }
             else
             {
-                for (int i = 0; i < 4; i++)
+                for (int i = 0; i < PictureState.Length; i++)
                 {
                     PictureState[i].Stop();
                 }
@@ -240,13 +272,13 @@ namespace Year2013
             {
                 StartGame.Text = "停止"; 
                 GameStart = true;
-                for (int i = 0; i < 4; i++)
+                for (int i = 0; i < PictureState.Length; i++)
                 {
                     PictureState[i].Reset(i);
                 }
 
                 StartPauseTimer.Enabled = true;
-                StartPauseTick = 2;
+                StartPauseTick = 1;
                 if (!IS_DEBUG)
                 {
                     StartGame.Visible = false;
@@ -283,7 +315,7 @@ namespace Year2013
         private int GetResult()
         {
             int result = 0;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < PictureState.Length; i++)
             {
                 if (!PictureState[i].IsStopped())
                 {
@@ -345,7 +377,6 @@ namespace Year2013
                     }
                     priceIndex = j+1;
                 }
-                priceIndex += 1;
                 ResultDataList[i].price = priceIndex;
             }
 
@@ -362,8 +393,19 @@ namespace Year2013
             return true;
         }
 
+        private string GetPriceItemByPrice(int price)
+        {
+            if (price >= AllPriceItem.Length)
+            {
+                return "";
+            }
+            PriceItemByReward curPrice = AllPriceItem[price];
+            return curPrice.GetOneItem();
+        }
+
         private void UpdateUserInfoToList()
         {
+            InitAllPrice();
             ResultList.BeginUpdate();
             ResultList.Items.Clear();
             System.Windows.Forms.ListViewItem visibleListView = null;
@@ -372,6 +414,7 @@ namespace Year2013
                 System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(user.name);
                 listViewItem1.SubItems.Add(user.result.ToString());
                 listViewItem1.SubItems.Add(user.GetPriceText());
+                listViewItem1.SubItems.Add(GetPriceItemByPrice(user.price));
                 if (CurrentPlayerName == user.name)
                 {
                     listViewItem1.ForeColor = Color.YellowGreen;
@@ -401,14 +444,50 @@ namespace Year2013
         {
             switch (price)
             {
-                case 1:
+                case 0:
                     return "一等奖!!";
-                case 2:
+                case 1:
                     return "二等奖!";
-                case 3:
+                case 2:
                     return "三等奖";
                 default:
                     return "";
+            }
+        }
+    }
+
+    public class PriceItem
+    {
+        public string name;
+    }
+
+    public class PriceItemByReward
+    {
+        public ArrayList items;
+        public PriceItemByReward()
+        {
+            items = new ArrayList();
+        }
+        public string GetOneItem()
+        {
+            if (items.Count == 0)
+            {
+                return "";
+            }
+            Random rd = new Random();
+            int curIndex = rd.Next(items.Count);
+            PriceItem curitem = items[curIndex] as PriceItem;
+            // 删除这个物品
+            items.Remove(curitem);
+            return curitem.name;
+        }
+        public void AddItem(string name, int count)
+        {
+            for (int i=0; i<count; i++)
+            {
+                PriceItem curItem = new PriceItem();
+                curItem.name = name;
+                items.Add(curItem);
             }
         }
     }

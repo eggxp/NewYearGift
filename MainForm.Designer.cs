@@ -41,6 +41,7 @@
             this.components = new System.ComponentModel.Container();
             this.DrawPanel = new System.Windows.Forms.Panel();
             this.StartGame = new System.Windows.Forms.Button();
+            this.NumberPanel = new Year2013.DoubeBufferDrawPanel();
             this.DrawPicture = new System.Windows.Forms.PictureBox();
             this.DrawTimer = new System.Windows.Forms.Timer(this.components);
             this.splitter1 = new System.Windows.Forms.Splitter();
@@ -50,7 +51,7 @@
             this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader2 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader3 = new System.Windows.Forms.ColumnHeader();
-            this.NumberPanel = new Year2013.DoubeBufferDrawPanel();
+            this.columnHeader4 = new System.Windows.Forms.ColumnHeader();
             this.DrawPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DrawPicture)).BeginInit();
             this.SuspendLayout();
@@ -76,6 +77,16 @@
             this.StartGame.Text = "开始";
             this.StartGame.UseVisualStyleBackColor = false;
             this.StartGame.Click += new System.EventHandler(this.StartGame_Click);
+            // 
+            // NumberPanel
+            // 
+            this.NumberPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.NumberPanel.BackColor = System.Drawing.Color.SaddleBrown;
+            this.NumberPanel.Location = new System.Drawing.Point(62, 187);
+            this.NumberPanel.Name = "NumberPanel";
+            this.NumberPanel.Size = new System.Drawing.Size(865, 357);
+            this.NumberPanel.TabIndex = 4;
+            this.NumberPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.NumberPanel_Paint);
             // 
             // DrawPicture
             // 
@@ -118,7 +129,8 @@
             this.ResultList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2,
-            this.columnHeader3});
+            this.columnHeader3,
+            this.columnHeader4});
             this.ResultList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ResultList.Font = new System.Drawing.Font("微软雅黑", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.ResultList.ForeColor = System.Drawing.Color.Yellow;
@@ -145,15 +157,10 @@
             this.columnHeader3.Text = "结果";
             this.columnHeader3.Width = 200;
             // 
-            // NumberPanel
+            // columnHeader4
             // 
-            this.NumberPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.NumberPanel.BackColor = System.Drawing.Color.SaddleBrown;
-            this.NumberPanel.Location = new System.Drawing.Point(62, 187);
-            this.NumberPanel.Name = "NumberPanel";
-            this.NumberPanel.Size = new System.Drawing.Size(865, 357);
-            this.NumberPanel.TabIndex = 4;
-            this.NumberPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.NumberPanel_Paint);
+            this.columnHeader4.Text = "奖品";
+            this.columnHeader4.Width = 2000;
             // 
             // MainForm
             // 
@@ -190,6 +197,7 @@
         private DoubeBufferDrawPanel NumberPanel;
         private System.Windows.Forms.Timer StartPauseTimer;
         private System.Windows.Forms.Timer WaitResultTimer;
+        private System.Windows.Forms.ColumnHeader columnHeader4;
     }
 }
 
