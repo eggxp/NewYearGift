@@ -379,17 +379,6 @@ namespace Year2013
                 }
                 ResultDataList[i].price = priceIndex;
             }
-
-            FileStream sFile = new FileStream("bak.txt", FileMode.Create);
-            StreamWriter sw = new StreamWriter(sFile);
-
-            foreach (UserInfo user in ResultDataList)
-            {
-                string curString = string.Format("{0:G}\t{1:G}\t{2:G}", user.name, user.result, user.price);
-                sw.WriteLine(curString);
-            }
-            sw.Flush();
-            sw.Close();
             return true;
         }
 
@@ -414,7 +403,8 @@ namespace Year2013
                 System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(user.name);
                 listViewItem1.SubItems.Add(user.result.ToString());
                 listViewItem1.SubItems.Add(user.GetPriceText());
-                listViewItem1.SubItems.Add(GetPriceItemByPrice(user.price));
+                user.price_item = GetPriceItemByPrice(user.price);
+                listViewItem1.SubItems.Add(user.price_item);
                 if (CurrentPlayerName == user.name)
                 {
                     listViewItem1.ForeColor = Color.YellowGreen;
@@ -432,6 +422,19 @@ namespace Year2013
             {
                 visibleListView.EnsureVisible();
             }
+
+
+            // 保存文件
+            FileStream sFile = new FileStream("bak.txt", FileMode.Create);
+            StreamWriter sw = new StreamWriter(sFile);
+
+            foreach (UserInfo user in ResultDataList)
+            {
+                string curString = string.Format("{0:G}\t{1:G}\t{2:G}\t{3:G}", user.name, user.result, user.price, user.price_item);
+                sw.WriteLine(curString);
+            }
+            sw.Flush();
+            sw.Close();
         }
     }
 
@@ -440,6 +443,7 @@ namespace Year2013
         public string name;
         public int result;
         public int price;
+        public string price_item;
         public string GetPriceText()
         {
             switch (price)
