@@ -42,7 +42,7 @@ namespace Year2013
             switch (index)
             {
                 case 0:
-                    speed_inc = 20;
+                    speed_inc = 30;
                     break;
                 case 1:
                     speed_inc = 2;
@@ -86,7 +86,7 @@ namespace Year2013
         }
         public void Update()
         {
-            if (UpdateSpeed < 10000)
+            if (UpdateSpeed < 100000)
             {
                 UpdateSpeed += speed_inc;
             }
