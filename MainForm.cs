@@ -20,7 +20,7 @@ namespace Year2013
         const int MAX_PROCESS = 100;
         double UpdateSpeed;
         const double SPEED_MODIFIER = 15;
-        const double SPEED_INC = 20;
+        double speed_inc;
         public void Init(int dir, int index)
         {
             CurrentProcess = 0;
@@ -38,8 +38,22 @@ namespace Year2013
         public void Reset(int index)
         {
             Random ran = new Random();
-            int RandKey = ran.Next(50, 100);
-            UpdateSpeed = SPEED_MODIFIER + RandKey - index * 10;
+            UpdateSpeed = SPEED_MODIFIER;
+            switch (index)
+            {
+                case 0:
+                    speed_inc = 20;
+                    break;
+                case 1:
+                    speed_inc = 2;
+                    break;
+                case 2:
+                    speed_inc = 1.5;
+                    break;
+                case 3:
+                    speed_inc = 1;
+                    break;
+            }
         }
         public int GetCurrentNum()
         {
@@ -74,7 +88,7 @@ namespace Year2013
         {
             if (UpdateSpeed < 10000)
             {
-                UpdateSpeed += SPEED_INC;
+                UpdateSpeed += speed_inc;
             }
             CurrentProcess += (int)(UpdateSpeed / SPEED_MODIFIER);
             if (CurrentProcess < MAX_PROCESS)   
