@@ -42,7 +42,7 @@ namespace Year2013
             switch (index)
             {
                 case 0:
-                    speed_inc = 30;
+                    speed_inc = ran.Next(30, 50);
                     break;
                 case 1:
                     speed_inc = 2;
