@@ -102,7 +102,7 @@
             // 
             // DrawTimer
             // 
-            this.DrawTimer.Interval = 10;
+            this.DrawTimer.Interval = 30;
             this.DrawTimer.Tick += new System.EventHandler(this.DrawTimer_Tick);
             // 
             // splitter1

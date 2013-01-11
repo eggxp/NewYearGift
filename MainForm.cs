@@ -20,7 +20,7 @@ namespace Year2013
         const int MAX_PROCESS = 100;
         double UpdateSpeed;
         const double SPEED_MODIFIER = 15;
-        const double SPEED_INC = 3;
+        const double SPEED_INC = 20;
         public void Init(int dir, int index)
         {
             CurrentProcess = 0;
