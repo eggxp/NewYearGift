@@ -138,6 +138,7 @@ namespace Year2013
         List<UserInfo> ResultDataList;
         string CurrentPlayerName;
         PriceItemByReward[] AllPriceItem;
+        string SaveFileName;
         public MainForm()
         {
             InitializeComponent();
@@ -439,7 +440,15 @@ namespace Year2013
 
 
             // 保存文件
-            FileStream sFile = new FileStream("bak.txt", FileMode.Create);
+            if (SaveFileName == null)
+            {
+                SaveFileName = "";
+                Random rd = new Random();
+                int cur_file_name = rd.Next(1000000);
+                SaveFileName = string.Format("bak{0:G}.txt", cur_file_name);
+            }
+            
+            FileStream sFile = new FileStream(SaveFileName, FileMode.Create);
             StreamWriter sw = new StreamWriter(sFile);
 
             foreach (UserInfo user in ResultDataList)
